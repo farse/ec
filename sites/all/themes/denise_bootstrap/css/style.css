@@ -9,14 +9,17 @@
  	color: #8b7793;
  }
 body {
- 	font-size: 16px;
+ 	font-size: 1em;
     line-height: 160%;
     background-color: #181818;
     color: #f0f0f0;
     font-family: Arial,sans-serif;
  }
+ p {
+  line-height: 145%;
+ }
 .front h2 {
-font-size: 24px;
+font-size: 1.3em;
  }
 .navbar .container {
 	background-color: #333;
@@ -151,6 +154,13 @@ h2, h3, h4, h5, h6 {
 .field-name-field-flickr-image,
 .field-name-field-image {
 
-  float: left;
-  margin: 1%;
+  /*float: left;
+  margin: 1%;*/
+}
+
+
+li.node-readmore.first.last {
+
+  padding-left: 0;
+  padding-top: 5px;
 }
