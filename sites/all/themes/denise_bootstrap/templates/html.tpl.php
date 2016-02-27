@@ -14,8 +14,7 @@
 
   <!--Google fonts-->
   <link href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
   <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
 
