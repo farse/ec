@@ -56,7 +56,7 @@ function webform_ajax_form_webform_configure_form_alter(&$form, &$form_state) {
   $form['webform_ajax_fieldset']['webform_ajax_confirmation'] = array(
     '#type' => 'checkbox',
     '#title' => t('Show confirmation screen'),
-    '#description' => t('Choose whether to retrieve in AJAX, after webform submit, the confirmation screen, or the webform itself. Available only when redirection is set to "No redirect".'),
+    '#description' => t('Choose wether to retrieve in AJAX, after webform submit, the confirmation screen, or the webform itself. Available only when redirection is set to "No redirect".'),
     '#default_value' => $node->webform['webform_ajax'] == WEBFORM_AJAX_NO_CONFIRM ? FALSE : TRUE,
     '#states' => array(
       'visible' => array(
@@ -128,9 +128,7 @@ function webform_ajax_form_webform_client_form_alter(&$form, $form_state, $form_
         // As long as buttons HTML id are causing problems, and it has bad
         // consequences on pages where Webform AJAX is active, we'll force
         // custom ids on AJAXed Webform's buttons.
-        $submit_id = drupal_html_id('edit-webform-ajax-' . $button . '-' .$form['#node']->nid);
-        $form['actions'][$button]['#attributes']['id'] = $submit_id;
-        $form['actions'][$button]['#id'] = $submit_id;
+        $form['actions'][$button]['#id'] = drupal_html_id('edit-webform-ajax-' . $button . '-' .$form['#node']->nid);
       }
     }
   }
@@ -235,7 +233,6 @@ function _webform_ajax_callback_completed($form, $form_state) {
     // This output does not alter the page, and ensures Drupal messages are kept for the next request.
     $output = array(
       '#type' => 'ajax',
-      '#commands' => array(),
     );
   }
   return $output;
