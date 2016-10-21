@@ -1,3 +1,16 @@
+AuthUserFile /home/denise/www/ec/public/.htpasswd
+AuthName "Locked"
+AuthType Basic
+Require valid-user
+
+SetEnvIf Host preggers.existscollectively.com secure_content
+
+Order Allow,Deny
+Allow from all
+Deny from env=secure_content
+
+Satisfy Any
+
 #
 # Apache/PHP/Drupal settings:
 #
@@ -56,6 +69,16 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
+  ### SET UP ENVIORNMENTS (from http://www.thenerdary.net/post/20965499862/htaccess-environments) ###
+  RewriteRule .* - [E=ENVIRONMENT:master]
+
+  RewriteCond %{SERVER_NAME} .local$ [OR]
+  RewriteCond %{SERVER_NAME} ^preggers.$ [OR]
+  RewriteCond %{SERVER_NAME} ^stage.$ [OR]
+  RewriteRule .* - [E=ENVIRONMENT:non-www]
+
+
+
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
   # you don't bounce between http and https.
@@ -89,6 +112,7 @@ DirectoryIndex index.php index.html index.htm
   # To redirect all users to access the site WITH the 'www.' prefix,
   # (http://example.com/... will be redirected to http://www.example.com/...)
   # uncomment the following:
+  RewriteCond %{ENV:ENVIRONMENT} master
   RewriteCond %{HTTP_HOST} .
   RewriteCond %{HTTP_HOST} !^www\. [NC]
   RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
