@@ -3,6 +3,10 @@
 /**
  * Tests for the Metatag Devel module.
  */
+
+/**
+ * Tests for the Metatag Devel module.
+ */
 class MetatagDevelest extends MetatagTestHelper {
 
   /**

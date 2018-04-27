@@ -3,6 +3,10 @@
 /**
  * Tests for the Metatag DC Advanced module.
  */
+
+/**
+ * Tests for the Metatag DC Advanced module.
+ */
 class MetatagDcAdvancedTest extends MetatagTestHelper {
 
   /**
