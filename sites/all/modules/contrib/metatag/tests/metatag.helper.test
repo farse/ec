@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @file
  * A base class for the Metatag tests, provides shared methods.
  */
+abstract class MetatagTestHelper extends DrupalWebTestCase {
 
 /**
  * A base class for the Metatag tests, provides shared methods.

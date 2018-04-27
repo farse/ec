@@ -2116,7 +2116,7 @@ function webform_node_view($node, $view_mode) {
 /**
  * Helper. Generates an array of allowed roles.
  *
- * @param object $node
+ * @param stdClass $node
  *   The loaded node object containing a webform.
  * @param bool $user_is_allowed
  *   Reference to boolean to be set to whether the current user is allowed.
@@ -3973,7 +3973,7 @@ function _webform_fetch_draft_sid($nid, $uid) {
 /**
  * Returns a new or cached WebformConditionals object for the specified node.
  *
- * @param object $node
+ * @param stdClass $node
  *   The loaded webform node.
  *
  * @returns object
@@ -4932,7 +4932,7 @@ function webform_disable_page_cache() {
 /**
  * Set the necessary breadcrumb for the page we are on.
  *
- * @param object $node
+ * @param stdClass $node
  *   The loaded webform node.
  * @param bool|object $submission
  *   The submission if the current page is viewing or dealing with a submission,

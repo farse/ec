@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @file
  * Tests for the Metatag module to ensure Locale integration doesn't break.
  */
 

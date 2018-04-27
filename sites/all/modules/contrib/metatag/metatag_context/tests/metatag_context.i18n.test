@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @file
  * Tests the Metatag:Context module for i18n integration.
  */
 
