@@ -305,7 +305,7 @@ function _webform_render_number($component, $value = NULL, $filter = TRUE, $subm
     '#point' => $component['extra']['point'],
     '#separator' => $component['extra']['separator'],
     '#decimals' => $component['extra']['decimals'],
-    '#translatable' => array('title', 'description', 'field_prefix', 'field_suffix'),
+    '#translatable' => array('title', 'description', 'field_prefix', 'field_suffix', 'placeholder'),
   );
 
   if ($component['required']) {
@@ -404,7 +404,7 @@ function _webform_display_number($component, $value, $format = 'html', $submissi
     '#field_suffix' => $empty ? '' : $component['extra']['field_suffix'],
     '#format' => $format,
     '#value' => $empty ? '' : _webform_number_format($component, $value[0]),
-    '#translatable' => array('title'),
+    '#translatable' => array('title', 'placeholder'),
   );
 }
 
@@ -815,17 +815,18 @@ function _webform_number_format($component, $value) {
  * This function allows the thousands separator to be optional, but decimal
  * points must be in the right location.
  *
+ * A valid number is:
+ *   1. optional minus sign.
+ *   2. optional space.
+ *   3. the rest of the string can't be just a decimal or blank.
+ *   4. optional integer portion, with thousands separators.
+ *   5. optional decimal portion, starting is a decimal separator.
+ * Don't use preg_quote because a space is a valid thousands separator and
+ * needs quoting for the 'x' option to preg_match.
+ *
  * Based on http://stackoverflow.com/questions/5917082/regular-expression-to-match-numbers-with-or-without-commas-and-decimals-in-text.
  */
 function webform_number_format_match($value, $point, $separator) {
-  // A valid number is:
-  //   1. optional minus sign.
-  //   2. optional space.
-  //   3. the rest of the string can't be just a decimal or blank.
-  //   4. optional integer portion, with thousands separators.
-  //   5. optional decimal portion, starting is a decimal separator.
-  // Don't use preg_quote because a space is a valid thousands separator and
-  // needs quoting for the 'x' option to preg_match.
   $thousands = $separator ? "\\$separator?" : '';
   $decimal = "\\$point";
   return preg_match("/
